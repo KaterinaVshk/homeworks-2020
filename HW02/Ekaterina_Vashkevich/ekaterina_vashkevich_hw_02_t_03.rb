@@ -5,7 +5,7 @@ logs = File.readlines('data_t_03.txt')
 
 REGEX_TIME = /^\d{4}\-\d{2}\-\d{2}\s\d{2}\:\d{2}\:\d{2}.\d{1}/.freeze
 
-# function that parsing time
+# function, that parsing time
 def time_parse(line)
   Time.parse(line[REGEX_TIME])
 end
@@ -32,4 +32,4 @@ end
 
 p duration_of_actions(logs)
 
-# output : ["49.1", "35.0"]
+# output: ["49.1", "35.0"]
