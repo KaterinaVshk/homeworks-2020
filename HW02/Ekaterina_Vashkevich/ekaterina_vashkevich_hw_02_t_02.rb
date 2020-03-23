@@ -6,7 +6,10 @@ REGEX_POST = /(.+)[\s\-]{5,}\[(.+)\] "POST (.+) HTTP/.freeze
 # formated line from log, that match REGEX_POST
 def formated_log(log)
   log.select { |line| line.match(REGEX_POST) }.map do |line|
-    "#{line.match(REGEX_POST)[2]} FROM: #{line.match(REGEX_POST)[1]} TO: #{line.match(REGEX_POST)[3].upcase}"
+    data = line.match(REGEX_POST)[2]
+    ip = line.match(REGEX_POST)[1]
+    path = line.match(REGEX_POST)[3]
+    "#{data} FROM: #{ip} TO: #{path.upcase}"
   end
 end
 
