@@ -3,5 +3,3 @@ Style/Documentation:
 
 Style/FrozenStringLiteralComment:
   Enabled: False
-
-
