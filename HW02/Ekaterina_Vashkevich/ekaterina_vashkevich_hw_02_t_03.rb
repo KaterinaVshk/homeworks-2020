@@ -1,38 +1,35 @@
 require 'time'
 
 # writes lines from file to array
-log = File.readlines('data_t_03.txt')
+logs = File.readlines('data_t_03.txt')
 
 REGEX_TIME = /^\d{4}\-\d{2}\-\d{2}\s\d{2}\:\d{2}\:\d{2}.\d{1}/.freeze
 
 # function that parsing time
 def time_parse(line)
-   Time.parse(line[REGEX_TIME])
+  Time.parse(line[REGEX_TIME])
 end
 
+def duration_of_actions(logs)
+  string_action = logs.select { |line| line.include? 'Calling core' }
+  return 0 if string_action.size < 2
 
-def duration_of_action(logs)
+  # finds duration betwenn 1st and 2nd event, 2nd and 3rd etc.
+  rezult = string_action.map.with_index do |line, index|
+    if index < string_action.size - 1
 
-    string_action = logs.select {|line| line.include? ('Calling core')}
-    
-    return 0 if string_action.size < 2 
-   
-    #finds duration betwenn 1st and 2nd event, 2nd and 3rd etc.
-    rezult = string_action.map.with_index {|line, index|
-      if index < string_action.size - 1
-        
-        #start event time
-        start = time_parse(line) 
+      # start event time
+      start = time_parse(line)
 
-        #event time
-        finish = time_parse(string_action[index+1])
-        (finish - start).to_s 
-      end
-    }
-    rezult.delete_at(rezult.size - 1)
-    rezult
+      # event time
+      finish = time_parse(string_action[index + 1])
+      (finish - start).to_s
+    end
+  end
+  rezult.delete_at(rezult.size - 1)
+  rezult
 end
 
- p duration_of_action(log)
+p duration_of_actions(logs)
 
- #output : ["49.1", "35.0"]
+# output : ["49.1", "35.0"]

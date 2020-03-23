@@ -4,4 +4,9 @@ Style/Documentation:
 Style/FrozenStringLiteralComment:
   Enabled: False
 
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/AbcSize:
+ Max: 20
 
