@@ -11,29 +11,22 @@ class Student
     @notifications = []
   end
 
-  def sumbit_homework!(homework)
+  def sumbit_homework!(number, description, link)
+    homework = Homework.new(number, description, link)
     @homeworks << homework
     notify_homeworks(homework)
   end
 
-  def notify_homeworks(homework)
-    mentors.each { |mentor| mentor.notify_homeworks(self, homework) }
-  end
-
-  def subscribe(mentor)
-    @mentors << mentor
-    notify_subscription(mentor)
-  end
-
-  def notify_check_homework(homework)
-    @notifications << "#{homework} checked "
-  end
-
-  def notify_subscription(mentor)
-    @notifications << "#{mentor.name} #{mentor.surname} subscribe to you"
-  end
-
   def read_notifications!
     @notifications.clear
+  end
+
+  private
+
+  def notify_homeworks(homework)
+    mentors.each do |mentor|
+      notification = Notification.new("#{name} #{surname} add #{homework.number}", " #{homework.description} #{homework.link}")
+      mentor.notifications << notification
+    end
   end
 end
