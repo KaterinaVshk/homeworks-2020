@@ -25,8 +25,9 @@ class Student
 
   def notify_homeworks(homework)
     mentors.each do |mentor|
-      notification = Notification.new("#{name} #{surname} add #{homework.number}", " #{homework.description} #{homework.link}")
-      mentor.notifications << notification
+      topic = "#{name} #{surname} add #{homework.number}"
+      message = " #{homework.description} #{homework.link}"
+      mentor.notifications << Notification.new(topic, message)
     end
   end
 end

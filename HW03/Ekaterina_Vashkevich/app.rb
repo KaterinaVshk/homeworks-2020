@@ -26,6 +26,3 @@ p mentor.notifications.join(', ') # Output: ""
 
 student.read_notifications!
 p student.notifications.join(', ') # Output: ""
-
-
-

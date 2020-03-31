@@ -31,4 +31,3 @@ class Mentor
     student.notifications << notification
   end
 end
-
