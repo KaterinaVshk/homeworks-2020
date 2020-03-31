@@ -23,6 +23,7 @@ class Student
 
   private
 
+  # notify mentors about adding homework
   def notify_homeworks(homework)
     mentors.each do |mentor|
       topic = "#{name} #{surname} add #{homework.number}"
