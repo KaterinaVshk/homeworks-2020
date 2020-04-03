@@ -7,14 +7,14 @@ require 'pry'
 student = Student.new('John', 'Doe')
 mentor = Mentor.new('Jack', 'Gonsales')
 
-student.sumbit_homework!('HW01', 'sorting algorithm', 'http://github...')
-p student.homeworks.join(', ') # "{HW01, sorting algorithm, http://github...}"
+student.sumbit_homework!(Homework.new('HW01', 'sorting ...', 'http://git..'))
+p student.homeworks.join(', ') # "{HW01, sorting ..., http://git...}"
 
 mentor.subscribe_to!(student)
 p student.notifications.join(',') # "Jack Gonsales subscribe to you "
 p mentor.notifications.join(',') # Output: ""
 
-student.sumbit_homework!('HW02', 'working with file', 'http://github...')
+student.sumbit_homework!(Homework.new('HW02', 'working with..', 'http://git..'))
 p mentor.notifications.join(', ') # "Student: John Doe add 'HW02' ...'"
 p student.homeworks.join(', ') # "{HW01, sorting ...}, {HW02, working...}"
 

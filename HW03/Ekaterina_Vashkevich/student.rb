@@ -11,8 +11,7 @@ class Student
     @notifications = []
   end
 
-  def sumbit_homework!(number, description, link)
-    homework = Homework.new(number, description, link)
+  def sumbit_homework!(homework)
     @homeworks << homework
     notify_homeworks(homework)
   end
