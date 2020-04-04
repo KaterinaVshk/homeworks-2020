@@ -12,18 +12,18 @@ class Student
   end
 
   def sumbit_homework!(homework)
-    @homeworks << homework
-    notify_homeworks(homework)
+    homeworks << homework
+    notify_mentors(homework)
   end
 
   def read_notifications!
-    @notifications.clear
+    notifications.clear
   end
 
   private
 
   # notify mentors about adding homework
-  def notify_homeworks(homework)
+  def notify_mentors(homework)
     mentors.each do |mentor|
       topic = "#{name} #{surname} add #{homework.number}"
       message = " #{homework.description} #{homework.link}"

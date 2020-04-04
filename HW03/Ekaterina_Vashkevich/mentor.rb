@@ -1,7 +1,7 @@
 # class describes the state and behavior of mentors and
 # interaction with students
 class Mentor
-  attr_reader :name, :surname, :notifications
+  attr_reader :name, :surname, :notifications, :students
 
   def initialize(name, surname)
     @name = name
@@ -11,7 +11,7 @@ class Mentor
   end
 
   def subscribe_to!(student)
-    @students << student
+    students << student
     student.mentors << self
     subscribe_notification(student)
   end
@@ -22,7 +22,7 @@ class Mentor
   end
 
   def read_notifications!
-    @notifications.clear
+    notifications.clear
   end
 
   private
