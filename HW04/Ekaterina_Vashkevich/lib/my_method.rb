@@ -11,7 +11,7 @@ module MyMethod
         end
         self
       else
-        to_enum(__method__)
+        to_enum(:my_each)
       end
     end
   
@@ -25,7 +25,7 @@ module MyMethod
           end
           rezult
         else
-          to_enum(__method__)
+          to_enum(:my_map)
       end
     end
   
@@ -39,9 +39,11 @@ module MyMethod
           end
           rezult
         else
-          to_enum(__method__)
+          to_enum(:my_select)
       end
     end
 end
   
-  
+class Array
+  include MyMethod
+end
