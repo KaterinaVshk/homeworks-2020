@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Module contain my implement each,map and select
-module MyModule
+# Module contain my implement each, map and select
+module MyMethod
     def my_each
       if block_given?
         index = 0

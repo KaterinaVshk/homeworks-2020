@@ -1,7 +1,7 @@
-require_relative 'lib/my_module'
+require_relative 'lib/my_method'
 
 class Array
-    include MyModule
+    include MyMethod
 end
   
 array = [1, 2, 3, 4, 5]
